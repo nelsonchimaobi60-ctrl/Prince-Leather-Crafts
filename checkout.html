@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Prince Leather Crafts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .checkout-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+        .checkout-box h2 {
+            margin-bottom: 20px;
+            color: #222;
+        }
+        .checkout-form input,
+        .checkout-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        .checkout-form label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .checkout-item img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .checkout-item-details { flex: 1; }
+        .checkout-item-details p { margin: 5px 0; }
+        .checkout-item-price { font-weight: bold; }
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px solid #222;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .checkout-btn:hover { background: #128C7E; }
+        .empty-message { padding: 20px 0; color: #777; }
+        @media (max-width: 768px) {
+            .checkout-container { grid-template-columns: 1fr; margin: 15px auto; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>PRINCE <span>LEATHER CRAFTS</span></h2>
+            <small>QUALITY • STYLE • COMFORT</small>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="order.html">Shop</a>
+            <a href="basket.html">Basket (<span id="cart-count">0</span>)</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <h1 style="text-align:center; margin-top:30px;">Checkout</h1>
+
+    <div class="checkout-container">
+
+        <!-- DELIVERY INFORMATION -->
+        <div class="checkout-box">
+            <h2>Delivery Information</h2>
+            <form id="checkoutForm" class="checkout-form">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+
+                <label for="deliveryAddress">Delivery Address</label>
+                <textarea id="deliveryAddress" rows="4" placeholder="Enter your delivery address" required></textarea>
+
+                <label for="extraInfo">Additional Information</label>
+                <textarea id="extraInfo" rows="3" placeholder="Any additional information (optional)"></textarea>
+
+                <button type="button" id="whatsappSubmitBtn" class="checkout-btn">
+                    Confirm Order via WhatsApp
+                </button>
+            </form>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="checkout-box">
+            <h2>Order Summary</h2>
+            <div id="checkout-items">
+                <p class="empty-message">Loading your order...</p>
+            </div>
+            <div class="checkout-total">
+                <span>Total:</span>
+                <span id="checkout-total">₦0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Prince Leather Crafts Footwear Company.</p>
+        <p>Quality • Style • Comfort</p>
+    </footer>
+
+    <!-- CART JS -->
+    <script src="cart.js"></script>
+
+    <!-- CHECKOUT DIRECT SCRIPT -->
+    <script>
+        function loadCheckoutSummary() {
+            var summaryBox = document.getElementById("checkout-items");
+            var totalBox = document.getElementById("checkout-total");
+            if (!summaryBox || !totalBox) return;
+
+            var rawBasket = localStorage.getItem("princeBasket");
+            var basket = [];
+            try {
+                basket = JSON.parse(rawBasket) || [];
+            } catch(e) {
+                basket = [];
+            }
+
+            if (basket.length === 0) {
+                summaryBox.innerHTML = '<p class="empty-message">Your basket is empty. <a href="order.html">Continue shopping</a></p>';
+                totalBox.textContent = "₦0";
+                return;
+            }
+
+            var total = 0;
+            var html = "";
+
+            for (var i = 0; i < basket.length; i++) {
+                var item = basket[i];
+                var price = Number(item.price) || 0;
+                var qty = Number(item.quantity) || 0;
+                var subtotal = price * qty;
+                total += subtotal;
+
+                html += '<div class="checkout-item">';
+                if (item.image) {
+                    html += '<img src="' + item.image + '" alt="' + item.name + '">';
+                }
+                html += '<div class="checkout-item-details">';
+                html += '<strong>' + item.name + '</strong>';
+                html += '<p>Size: ' + (item.size || 'N/A') + '</p>';
+                html += '<p>Quantity: ' + qty + '</p>';
+                html += '<p class="checkout-item-price">₦' + subtotal.toLocaleString("en-NG") + '</p>';
+                html += '</div></div>';
+            }
+
+            summaryBox.innerHTML = html;
+            totalBox.textContent = "₦" + total.toLocaleString("en-NG");
+        }
+
+        function sendToWhatsApp() {
+            var fullName = document.getElementById("fullName").value.trim();
+            var phone = document.getElementById("phone").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var address = document.getElementById("deliveryAddress").value.trim();
+            var extra = document.getElementById("extraInfo").value.trim();
+
+            if (!fullName || !phone || !email || !address) {
+                alert("Please fill in all required delivery information fields!");
+                return;
+            }
+
+            var rawBasket = localStorage.getItem("princeBasket");
+            var basket = [];
+            try {
+                basket = JSON.parse(rawBasket) || [];
+            } catch(e) {
+                basket = [];
+            }
+
+            if (basket.length === 0) {
+                alert("Your basket is empty!");
+                return;
+            }
+
+            var total = 0;
+            var itemsText = "";
+
+            for (var i = 0; i < basket.length; i++) {
+                var item = basket[i];
+                var subtotal = (Number(item.price) || 0) * (Number(item.quantity) || 0);
+                total += subtotal;
+                itemsText += (i + 1) + ". " + item.name + " (Size " + item.size + ") x" + item.quantity + " = ₦" + subtotal.toLocaleString("en-NG") + "\n";
+            }
+
+            var message = "NEW ORDER - PRINCE LEATHER CRAFTS\n\n" +
+                "Name: " + fullName + "\n" +
+                "Phone: " + phone + "\n" +
+                "Email: " + email + "\n\n" +
+                "Delivery Address:\n" + address + "\n\n" +
+                "Order Items:\n" + itemsText + "\n" +
+                "Total: ₦" + total.toLocaleString("en-NG") + "\n\n" +
+                "Additional Notes: " + (extra || "None");
+
+            var targetNumber = "2349163834646";
+            var url = "https://wa.me/" + targetNumber + "?text=" + encodeURIComponent(message);
+
+            // Redirect directly
+            window.location.href = url;
+        }
+
+        window.onload = function() {
+            loadCheckoutSummary();
+            var btn = document.getElementById("whatsappSubmitBtn");
+            if (btn) {
+                btn.onclick = sendToWhatsApp;
+            }
+        };
+    </script>
+</body>
+</html>

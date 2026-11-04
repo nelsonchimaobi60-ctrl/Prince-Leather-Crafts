@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Prince Leather Crafts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="cart.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h2>PRINCE <span>LEATHER CRAFTS</span></h2>
+        <small>QUALITY • STYLE • COMFORT</small>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="order.html" class="active">Shop</a>
+        <a href="basket.html">Basket (<span id="cart-count">0</span>)</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="page-banner">
+    <h1>Our Footwear Collection</h1>
+    <p>Choose your favourite footwear, size and quantity.</p>
+</section>
+
+<section class="products">
+
+    <h2>Shop Our Collection</h2>
+    <p class="subtitle">Select your preferred shoe size and quantity.</p>
+
+    <div class="product-container">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card">
+            <img src="all image/foot2.jpeg" alt="Classic sneakers">
+
+            <h3>Classic Footwear</h3>
+            <p>Stylish and comfortable everyday footwear.</p>
+            <h3 class="price">₦15,000</h3>
+
+            <div class="product-options">
+                <label for="size1">Select Shoe Size</label>
+                <select id="size1">
+                    <option value="">Choose size</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select>
+
+                <label for="qty1">Select Quantity</label>
+                <input type="number" id="qty1" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Classic Footwear',
+                    15000,
+                    'all image/foot2.jpeg',
+                    document.getElementById('size1').value,
+                    document.getElementById('qty1').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card">
+            <img src="all image/foot4.jpeg" alt="Elegant ladies shoes">
+
+            <h3>Elegant Ladies' Shoes</h3>
+            <p>Beautiful footwear for a classy appearance.</p>
+            <h3 class="price">₦15,000</h3>
+
+            <div class="product-options">
+                <label for="size2">Select Shoe Size</label>
+                <select id="size2">
+                    <option value="">Choose size</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                </select>
+
+                <label for="qty2">Select Quantity</label>
+                <input type="number" id="qty2" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Elegant Ladies Shoes',
+                    15000,
+                    'all image/foot4.jpeg',
+                    document.getElementById('size2').value,
+                    document.getElementById('qty2').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card">
+            <img src="all image/foot1.jpeg" alt="Premium leather shoes">
+
+            <h3>Premium Leather Shoes</h3>
+            <p>Elegant leather footwear with a premium finish.</p>
+            <h3 class="price">₦35,000</h3>
+
+            <div class="product-options">
+                <label for="size3">Select Shoe Size</label>
+                <select id="size3">
+                    <option value="">Choose size</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select>
+
+                <label for="qty3">Select Quantity</label>
+                <input type="number" id="qty3" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Premium Leather Shoes',
+                    35000,
+                    'all image/foot1.jpeg',
+                    document.getElementById('size3').value,
+                    document.getElementById('qty3').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+        </div>
+
+         <!-- PRODUCT 4 -->
+         <div class="product-card">
+            <img src="all image/foot8.jpeg" alt="Premium leather shoes">
+
+            <h3>nice footwear</h3>
+            <p>Elegant leather footwear with a premium finish.</p>
+            <h3 class="price">₦35,000</h3>
+
+            <div class="product-options">
+                <label for="size3">Select Shoe Size</label>
+                <select id="size3">
+                    <option value="">Choose size</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select>
+
+                <label for="qty3">Select Quantity</label>
+                <input type="number" id="qty3" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Premium Leather Shoes',
+                    35000,
+                    'all image/foot8.jpeg',
+                    document.getElementById('size3').value,
+                    document.getElementById('qty3').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+          </div>
+           <!-- PRODUCT 5 -->
+        <div class="product-card">
+            <img src="all image/foot9.jpeg" alt="Premium leather shoes">
+
+            <h3>Leather footwear</h3>
+            <p>Elegant leather footwear with a premium finish.</p>
+            <h3 class="price">₦15,000</h3>
+
+            <div class="product-options">
+                <label for="size3">Select Shoe Size</label>
+                <select id="size3">
+                    <option value="">Choose size</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select>
+
+                <label for="qty3">Select Quantity</label>
+                <input type="number" id="qty3" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Premium Leather Shoes',
+                    15000,
+                    'all image/foot9.jpeg',
+                    document.getElementById('size3').value,
+                    document.getElementById('qty3').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+        </div>
+         <!-- PRODUCT 6 -->
+        <div class="product-card">
+            <img src="all image/foot10.jpeg" alt="Premium leather shoes">
+
+            <h3>Premium just for men</h3>
+            <p>Elegant leather footwear with a premium finish for men.</p>
+            <h3 class="price">₦15,000</h3>
+
+            <div class="product-options">
+                <label for="size3">Select Shoe Size</label>
+                <select id="size3">
+                    <option value="">Choose size</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select>
+
+                <label for="qty3">Select Quantity</label>
+                <input type="number" id="qty3" value="1" min="1">
+
+                <button class="small-btn"
+                    onclick="addToBasket(
+                    'Premium Leather Shoes',
+                    15000,
+                    'all image/foot10.jpeg',
+                    document.getElementById('size3').value,
+                    document.getElementById('qty3').value
+                    )">
+                    Add to Basket
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section class="call-to-action">
+    <h2>Ready to Complete Your Shopping?</h2>
+    <p>Review your selected footwear in your basket.</p>
+    <a href="basket.html" class="btn">View My Basket</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 Prince Leather Crafts Footwear Company.</p>
+    <p>Quality • Style • Comfort</p>
+</footer>
+
+</body>
+</html>

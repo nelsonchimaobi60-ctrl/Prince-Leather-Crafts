@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basket | Prince Leather Crafts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="cart.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h2>PRINCE <span>LEATHER CRAFTS</span></h2>
+        <small>QUALITY • STYLE • COMFORT</small>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="order.html">Shop</a>
+        <a href="basket.html" class="active">Basket (<span id="cart-count">0</span>)</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="page-banner">
+    <h1>My Shopping Basket</h1>
+    <p>Review your selected footwear before checkout.</p>
+</section>
+
+<section class="basket-section">
+
+    <h2>Your Selected Products</h2>
+
+    <div id="basket-items"></div>
+
+    <div class="basket-summary">
+        <h2>Order Summary</h2>
+
+        <h3>Total Amount: <span id="basket-total">₦0</span></h3>
+
+        <a href="order.html" class="continue-btn">
+            Continue Shopping
+        </a>
+
+        <a href="checkout.html" class="btn">
+            Proceed to Checkout
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Prince Leather Crafts Footwear Company.</p>
+    <p>Quality • Style • Comfort</p>
+</footer>
+
+</body>
+</html>
